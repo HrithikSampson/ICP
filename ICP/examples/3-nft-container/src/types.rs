@@ -36,7 +36,7 @@ pub struct Nft {
     pub approved: Option<Principal>,
     pub id: u64,
     pub metadata: MetadataDesc,
-    pub content: Vec<u8>,
+    pub content: Vec<u16>,
 }
 
 pub type MetadataDesc = Vec<MetadataPart>;
@@ -46,7 +46,7 @@ pub type MetadataDescRef<'a> = &'a [MetadataPart];
 pub struct MetadataPart {
     pub purpose: MetadataPurpose,
     pub key_val_data: HashMap<String, MetadataVal>,
-    pub data: Vec<u8>,
+    pub data: Vec<u16>,
 }
 
 #[derive(CandidType, Deserialize, PartialEq)]
@@ -65,7 +65,7 @@ pub struct MintResult {
 #[derive(CandidType, Deserialize)]
 pub enum MetadataVal {
     TextContent(String),
-    BlobContent(Vec<u8>),
+    BlobContent(Vec<u16>),
     NatContent(u128),
     Nat8Content(u8),
     Nat16Content(u16),
